@@ -1,0 +1,2 @@
+<section .home-section>
+  <canvas #myChart height="10" width="30">

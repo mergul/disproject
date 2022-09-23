@@ -1,0 +1,17 @@
+<h1> All Posts
+<article .myposts>
+  <div .jumbotron>
+    <ul>
+      $forall Entity id post <- allPosts
+        <li>
+          <a href=@{PostDetailsR id}>
+              <section .fi>
+                <figure .figure>
+                  <img .figure-img src=@{StaticR img_thumb_jpeg} width="174px" height="109px" alt="Yosemite">
+                  <figcaption>Üyelik
+              <section .prf>
+                <h2 .article-title>#{blogPostTitle post}
+                <p .article-prf>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  <p .footers>Welcome to the Wiki!
+    
+    <a href=@{wikiRoot}>Wiki root

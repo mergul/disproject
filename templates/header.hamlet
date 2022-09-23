@@ -1,0 +1,48 @@
+$doctype 5
+<header>
+    <a .logo href="@{HomeR}">
+        <div>
+            <p .logos>
+                Adam
+    <input .nav-toggle #nav-toggle type="checkbox">
+    <label .nav-toggle-label for="nav-toggle">
+        <span>
+    <nav>
+        <ul>
+            $forall MenuItem label route _ <- navbarLeftFilteredMenuItems
+                <li :Just route == mcurrentRoute:.active>
+                    <a href="@{route}">#{label}
+            <li .nav-item .nav-item-dropdown>
+                <a .dropdown-trigger routerLink="/home">
+                    Blog
+                <ul .dropdown-menu>
+                    <li .dropdown-menu-item>
+                        <a routerLink="/home">
+                            blog entry
+                    <li .dropdown-menu-item>
+                        <a routerLink="/home">
+                            blog entry
+                    <li .dropdown-menu-item>
+                        <a routerLink="/home">
+                            blog entry
+            <li>
+                <a routerLink="secure/admin">
+                    Admin
+            <li>
+                <div .search-box>
+                    <img alt="Search" .simg height="27px" src=@{StaticR img_search_png} width="26px">
+                    <input placeholder="Search" type="text">
+            $maybe (_, user) <- muser
+                <li .nav-item-dropdown.navuser>
+                    <figure .user.online.dropdown-trigger>
+                        <img alt="user" .online-user height="50px" src=@{StaticR img_profile_jpeg} width="50px">
+                        <figcaption>
+                            #{userIdent user}
+                    <ul .dropdown-menu>
+                        $forall MenuItem label route _ <- navbarRightFilteredMenuItems
+                            <li :Just route == mcurrentRoute:.active .dropdown-menu-item>
+                                <a href="@{route}">#{label}
+            $nothing
+                $forall MenuItem label route _ <- navbarRightFilteredMenuItems
+                    <li :Just route == mcurrentRoute:.active .dropdown-menu-item>
+                        <a href="@{route}">#{label}

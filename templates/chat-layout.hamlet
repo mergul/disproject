@@ -1,0 +1,7 @@
+$maybe msg <- mmsg
+    <div .message>#{msg}
+<nav>
+    <a href=@{AuthR LoginR}>Login
+    \ | #
+    <a href=@{AuthR LogoutR}>Logout
+^{pageBody pc}

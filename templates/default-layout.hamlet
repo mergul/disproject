@@ -1,0 +1,161 @@
+
+<div .main>
+    <!-- Static navbar -->
+    <header .header>
+        <a .logo href="@{ParthomeR}" onclick="myRoute(event)">
+            <div>
+                <p .logos>
+                    Adam
+        <input .nav-toggle #nav-toggle type="checkbox">
+        <label .nav-toggle-label for="nav-toggle">
+            <span>
+        <nav .nav>
+            <ul>
+                $forall MenuItem label route _ <- navbarLeftFilteredMenuItems
+                    <li :Just route == mcurrentRoute:.active>
+                        <a href="@{route}" onclick="myRoute(event)">#{label}
+                <li .nav-item .nav-item-dropdown>
+                    <a .dropdown-trigger href="@{HomeR}">
+                        Blog
+                    <ul .dropdown-menu>
+                        <li .dropdown-menu-item>
+                            <a href="@{HomeR}">
+                                blog entry
+                        <li .dropdown-menu-item>
+                            <a href="@{HomeR}">
+                                blog entry
+                        <li .dropdown-menu-item>
+                            <a href="@{ParthomeR}">
+                                blog entry
+                <li>
+                    <div .search-box>
+                        $# <img alt="Search" .simg height="27px" src=@{StaticR img_search_png} width="26px">
+                        <input placeholder="Search" type="text">
+                $maybe (_, user) <- muser
+                    <li .nav-item-dropdown.navuser>
+                        <figure .user.online.dropdown-trigger>
+                            <img alt="user" .online-user height="50px" src=@{StaticR img_profile_jpeg} width="50px">
+                            <figcaption>
+                                #{userIdent user}
+                        <ul .dropdown-menu>
+                            $forall MenuItem label route _ <- navbarRightFilteredMenuItems
+                                <li :Just route == mcurrentRoute:.active .dropdown-menu-item>
+                                    <a href="@{route}">#{label}
+                $nothing
+                    $forall MenuItem label route _ <- navbarRightFilteredMenuItems
+                        <li :Just route == mcurrentRoute:.active .dropdown-menu-item>
+                            <a href="@{route}">#{label}
+    <!-- Page Contents -->
+    <div .mcontainer>
+        $if not $ Just HomeR == mcurrentRoute
+            <ul .breadcrumb>
+                $forall bc <- parents
+                    <li>
+                        <a href="@{fst bc}">#{snd bc}
+
+                <li .active>#{title}
+
+        $maybe msg <- mmsg
+          <div .alert.alert-info #message>#{msg}
+
+    <main .container>
+    $# $if (Just HomeR == mcurrentRoute)
+        ^{widget}
+    $# $else
+    $#     <main .container>
+    $#         <div .row>
+    $#             <div .col-md-12>
+    $#                 ^{widget}
+
+    <!-- Footer -->
+    <footer .footer-area>
+        <article .footer>
+            <section .single-footer>
+                <h2>
+                    about us
+                <p>
+                    Lorem ipsum dolor sit amet, di dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Excepteur
+                            sint qui officia deserunt Excepteur.
+                <div .footer-social>
+                    <a href="https://facebook.com/">
+                        <i .fab .fa-facebook-f>
+                        <span>
+                            Facebook
+                    <a href="https://twitter.com/">
+                        <i .fab .fa-twitter>
+                        <span>
+                            Twitter
+                    <a href="https://instagram.com">
+                        <i .fab .fa-instagram>
+                        <span>
+                            Instagram
+                    <a href="https://linkedin.com/">
+                        <i .fab .fa-linkedin-in>
+                        <span>
+                            LinkedIn
+            <section .single-footer>
+                <h2>
+                    main menu
+                <ul>
+                    <li>
+                        <a href="home">
+                            <i .fas .fa-chevron-right>
+                            home
+                    <li>
+                        <a href="home">
+                            <i .fas .fa-chevron-right>
+                            about us
+                    <li>
+                        <a href="home">
+                            <i .fas .fa-chevron-right>
+                            services
+                    <li>
+                        <a href="home">
+                            <i .fas .fa-chevron-right>
+                            gallery
+                    <li>
+                        <a href="home">
+                            <i .fas .fa-chevron-right>
+                            contact us
+            <section .single-footer>
+                <h2>
+                    quick links
+                <ul>
+                    <li>
+                        <a href="home">
+                            <i .fas .fa-chevron-right>
+                            privacy policy
+                    <li>
+                        <a href="home">
+                            <i .fas .fa-chevron-right>
+                            terms & conditions
+                    <li>
+                        <a href="home">
+                            <i .fas .fa-chevron-right>
+                            disclaimer
+            <section .single-footer>
+                <h2>
+                    contact us
+                <ul>
+                    <li>
+                        <a href="home">
+                            <i .fas .fa-map-marker-alt>
+                            Tepe Üstü, Ümraniye, İstanbul
+                    <li>
+                        <a href="home">
+                            <i .fas .fa-mobile-alt>
+                            +90 123 456 789
+                    <li>
+                        <a href="home">
+                            <i .far .fa-envelope>
+                            info@demo.com
+                    <li>
+                        <a href="home">
+                            <i .fas .fa-globe-europe>
+                            www.demo.com
+        <div .copy>
+            <p>
+                © 2020 all rights reserved
+        $# <div .container>
+        $#     <p .text-muted>
+            $#     #{appCopyright $ appSettings master}

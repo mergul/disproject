@@ -1,0 +1,7 @@
+.home-section {
+    display: block;
+    width: calc(100% - 78px);
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.4);
+}

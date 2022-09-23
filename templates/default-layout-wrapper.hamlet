@@ -1,0 +1,108 @@
+$newline never
+\<!doctype html>
+\<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+\<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+\<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+\<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+
+    <title>#{pageTitle pc}
+    <meta name="description" content="haskell yesod web">
+    <meta name="author" content="ME">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    ^{pageHead pc}
+    $# <script type="text/javascript" src="https://unpkg.com/rxjs@7.5.2/dist/bundles/rxjs.umd.min.js">
+    $# \<!--[if lt IE 9]>
+    $# \<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    $# \<![endif]-->
+    $# <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js">
+    $# <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.3/js.cookie.min.js">
+
+    $# \<!-- Bootstrap-3.3.7 compiled and minified JavaScript -->
+    $# <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+
+    $# <script> EDPVZD
+    $#   /* The `defaultCsrfMiddleware` Middleware added in Foundation.hs adds a CSRF token to the request cookies. */
+    $#   /* AJAX requests should add that token to a header to be validated by the server. */
+    $#   /* See the CSRF documentation in the Yesod.Core.Handler module of the yesod-core package for details. */
+    $#   var csrfHeaderName = "#{TE.decodeUtf8 $ CI.foldedCase defaultCsrfHeaderName}";
+
+    $#   var csrfCookieName = "#{TE.decodeUtf8 defaultCsrfCookieName}";
+    $#   var csrfToken = Cookies.get(csrfCookieName);
+
+
+    $#   if (csrfToken) {
+    $#   \  $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+    $#   \      if (!options.crossDomain) {
+    $#   \          jqXHR.setRequestHeader(csrfHeaderName, csrfToken);
+    $#   \      }
+    $#   \  });
+    $#   }
+    <script>
+      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
+      var mySubject;
+      window.addEventListener('load', (event) => {
+        getsScript("rxjs", "1", "https://unpkg.com/rxjs@7.5.2/dist/bundles/rxjs.umd.min.js?v=0",
+          "script", "javascript", function () {
+            mySubject = new rxjs.BehaviorSubject(false);
+            console.log("rxjs loaded!!!");
+          });
+      });
+      function myRoute(event) {
+        if (event.currentTarget.href.substr(-5) === "admin") return;
+        event.preventDefault();
+        window.history.pushState({}, "newUrl", event.currentTarget.href);
+        fetch(event.currentTarget.href)
+          .then((data) => data.text())
+          .then((html) => {
+            $# console.log(html);
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, "text/html"); 
+            document.querySelector("main.container").innerHTML = doc.querySelector("main.container").innerHTML;
+            document.getElementsByTagName("head")[0].appendChild(doc.querySelector("link"));
+            $# document.body.appendChild(doc.querySelector("script"));            
+          });
+      }
+      $# function loadScript(url, tag, content, callback) {
+      $#   const el = document.createElement(tag);
+      $#   if (tag === 'link') {
+      $#       el.setAttribute('rel', 'stylesheet');
+      $#       el.setAttribute('href', url);
+      $#   } else {
+      $#       el.setAttribute('type', 'text/javascript');
+      $#       el.setAttribute("id", "rxjs");
+      $#       url!== "" ? el.setAttribute('src', url):el.innerHTML=content;
+      $#   }
+      $#   el.addEventListener('load', callback);
+      $#   document.head.appendChild(el);
+      $# } 
+      $# window.addEventListener('load', (event) => {
+      $#   loadScript("https://unpkg.com/rxjs@7.5.2/dist/bundles/rxjs.umd.min.js", "script", "", function() {
+      $#     const tt = JSON.stringify(document.getElementById("rxjs").innerHTML);
+      $#     console.log("data: ", tt);
+      $#     localStorage.setItem("rxjs", tt);
+      $#     const { Observable, Subject, BehaviorSubject, ReplaySubject, from, of, range } = rxjs;
+      $#     const { map, filter, switchMap } = rxjs.operators;
+      $#     ber=new BehaviorSubject("first-wrapper");
+      $#     mySubject=new BehaviorSubject(false);
+      $#     console.log(ber.value, mySubject);
+      $#   });         
+      $# });
+  <body>
+    ^{pageBody pc}
+
+    $maybe analytics <- appAnalytics $ appSettings master
+      <script>
+        if(!window.location.href.match(/localhost/)){
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', '#{analytics}', 'auto');
+            ga('send', 'pageview');
+        }    

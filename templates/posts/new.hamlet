@@ -1,0 +1,5 @@
+<h1>Create new posts!
+<article>    
+    <form method=post action=@{PostNewR} enctype=#{enctype}>
+        ^{widget}
+        <button class="btn btn-default">Create Post!

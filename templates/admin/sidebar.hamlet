@@ -1,0 +1,37 @@
+<nav .sidebar #sidebar>
+    <ul .nav-list>
+        <li>
+            <i .bx.bx-search #search>
+            <input type="text" placeholder="Search...">
+        <li>
+            <a href=@{AdminR} onclick="myRouter(event, bar)">
+                <i .bx.bx-grid-alt>
+                <span .links_name>Dashboard
+        <li>
+            <a href=@{AdminR} onclick="myRouter(event, line)">
+                <i .bx.bx-user>
+                <span .links_name>Users
+        <li>
+            <a href=@{AdminPageviewsR} onclick="myRouter(event, bar)">
+                <i .bx.bx-chat>
+                <span .links_name>Pageviews
+        <li>
+            <a href=@{AdminPageviewsR} onclick="myRouter(event, polarArea)">
+                <i .bx.bx-pie-chart-alt-2>
+                <span .links_name>Analytics
+        <li>
+            <a href=@{AdminR} onclick="myRouter(event, polarArea)">
+                <i .bx.bx-folder>
+                <span .links_name>File Manager
+        <li>
+            <a href=@{AdminR} onclick="myRouter(event, doughnut)">
+                <i .bx.bx-cart-alt>
+                <span .links_name>Order
+        <li>
+            <a routerLink="">
+                <i .bx.bx-heart>
+                <span .links_name>Saved
+        <li>
+            <a routerLink="">
+                <i .bx.bx-cog>
+                <span .links_name>Setting

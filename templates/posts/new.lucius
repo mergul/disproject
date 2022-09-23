@@ -1,0 +1,25 @@
+textarea {
+   min-height: 300px;
+}
+textarea, form input {
+   background-color: rgba(0,0,0,0.4) !important;
+   color: white !important;
+}
+form, .form-group {
+  display: grid;
+  justify-content: center;
+}
+.form-group > input, .form-group > textarea {
+  width: 90vw;
+}
+
+form button {
+   background-color: #5e95ff66;
+   color: black;
+}
+form button:hover {
+   background-color: white;
+}
+form label {
+   color: white;
+}
