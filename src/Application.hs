@@ -47,8 +47,10 @@ import Handler.Comment
 import Handler.Common
 import Handler.Home
 import Handler.Partadmin
+import Handler.Partdetails
 import Handler.Parthome
 import Handler.Partnew
+import Handler.Partprofile
 import Handler.PostDetails
 import Handler.PostNew
 import Handler.Profile

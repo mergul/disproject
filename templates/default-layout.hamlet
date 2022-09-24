@@ -40,7 +40,7 @@
                         <ul .dropdown-menu>
                             $forall MenuItem label route _ <- navbarRightFilteredMenuItems
                                 <li :Just route == mcurrentRoute:.active .dropdown-menu-item>
-                                    <a href="@{route}">#{label}
+                                    <a href="@{route}" onclick="myRoute(event)">#{label}
                 $nothing
                     $forall MenuItem label route _ <- navbarRightFilteredMenuItems
                         <li :Just route == mcurrentRoute:.active .dropdown-menu-item>

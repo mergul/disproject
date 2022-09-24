@@ -45,6 +45,8 @@ $newline never
     <script>
       document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
       var mySubject;
+      const mamap = new Map();
+      console.log("ma state: ", location.href);
       window.addEventListener('load', (event) => {
         getsScript("rxjs", "1", "https://unpkg.com/rxjs@7.5.2/dist/bundles/rxjs.umd.min.js?v=0",
           "script", "javascript", function () {
@@ -53,45 +55,27 @@ $newline never
           });
       });
       function myRoute(event) {
-        if (event.currentTarget.href.substr(-5) === "admin") return;
+        const uparts=event.currentTarget.href.split("/");
+        if (uparts[uparts.length-1] === "admin"||uparts[uparts.length-2]==="auth") return;
         event.preventDefault();
         window.history.pushState({}, "newUrl", event.currentTarget.href);
         fetch(event.currentTarget.href)
           .then((data) => data.text())
           .then((html) => {
-            $# console.log(html);
+            console.log(html);
             var parser = new DOMParser();
             var doc = parser.parseFromString(html, "text/html"); 
+            mamap.set(uparts[uparts.length-1], doc);
             document.querySelector("main.container").innerHTML = doc.querySelector("main.container").innerHTML;
             document.getElementsByTagName("head")[0].appendChild(doc.querySelector("link"));
             $# document.body.appendChild(doc.querySelector("script"));            
           });
       }
-      $# function loadScript(url, tag, content, callback) {
-      $#   const el = document.createElement(tag);
-      $#   if (tag === 'link') {
-      $#       el.setAttribute('rel', 'stylesheet');
-      $#       el.setAttribute('href', url);
-      $#   } else {
-      $#       el.setAttribute('type', 'text/javascript');
-      $#       el.setAttribute("id", "rxjs");
-      $#       url!== "" ? el.setAttribute('src', url):el.innerHTML=content;
-      $#   }
-      $#   el.addEventListener('load', callback);
-      $#   document.head.appendChild(el);
-      $# } 
-      $# window.addEventListener('load', (event) => {
-      $#   loadScript("https://unpkg.com/rxjs@7.5.2/dist/bundles/rxjs.umd.min.js", "script", "", function() {
-      $#     const tt = JSON.stringify(document.getElementById("rxjs").innerHTML);
-      $#     console.log("data: ", tt);
-      $#     localStorage.setItem("rxjs", tt);
-      $#     const { Observable, Subject, BehaviorSubject, ReplaySubject, from, of, range } = rxjs;
-      $#     const { map, filter, switchMap } = rxjs.operators;
-      $#     ber=new BehaviorSubject("first-wrapper");
-      $#     mySubject=new BehaviorSubject(false);
-      $#     console.log(ber.value, mySubject);
-      $#   });         
-      $# });
+      window.addEventListener('popstate', function() {
+        const uparts=location.href.split("/");
+        document.querySelector("main.container").innerHTML = mamap.get(uparts[uparts.length-1]===""?"home":uparts[uparts.length-1]).querySelector("main.container").innerHTML;
+        $# document.getElementsByTagName("head")[0].appendChild(mamap.get(uparts[uparts.length-1]).querySelector("link"));
+      });
   <body>
     ^{pageBody pc}
 

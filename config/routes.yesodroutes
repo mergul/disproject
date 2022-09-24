@@ -13,12 +13,14 @@
 /comments CommentR POST
 
 /profile ProfileR GET
+/profiles PartprofileR GET
 /admin AdminR GET
 /adminr PartadminR GET
 /admin/pageviews AdminPageviewsR GET
 /posts/new PostNewR GET POST
 /posts/newr PartnewR GET
 /posts/!#BlogPostId PostDetailsR GET
+/postz/!#BlogPostId PartdetailsR GET
 
 /wiki/*Texts WikiR GET POST -- note the multipiece for the wiki hierarchy
 /chat ChatR Chat appChat    -- the chat subsite

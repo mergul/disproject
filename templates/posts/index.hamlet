@@ -4,7 +4,7 @@
     <ul>
       $forall Entity id post <- allPosts
         <li>
-          <a href=@{PostDetailsR id}>
+          <a href=@{PartdetailsR id}  onclick="myRoute(event)">
               <section .fi>
                 <figure .figure>
                   <img .figure-img src=@{StaticR img_thumb_jpeg} width="174px" height="109px" alt="Yosemite">

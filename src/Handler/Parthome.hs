@@ -7,9 +7,6 @@
 module Handler.Parthome where
 
 import Foundation
-  ( Handler,
-    Route (PostDetailsR, StaticR, WikiR),
-  )
 import Handler.EmptyLayout (emptyLayout)
 import Import.NoFoundation
 import Text.Julius ()

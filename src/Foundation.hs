@@ -172,7 +172,7 @@ instance Yesod App where
             NavbarRight $
               MenuItem
                 { menuItemLabel = "Profile",
-                  menuItemRoute = ProfileR,
+                  menuItemRoute = PartprofileR,
                   menuItemAccessCallback = isJust muser
                 },
             NavbarRight $
@@ -223,6 +223,7 @@ instance Yesod App where
   -- Routes not requiring authentication.
   isAuthorized (AuthR _) _ = return Authorized
   isAuthorized (PostDetailsR _) _ = return Authorized
+  isAuthorized (PartdetailsR _) _ = return Authorized
   isAuthorized CommentR _ = return Authorized
   isAuthorized HomeR _ = return Authorized
   isAuthorized PostNewR _ = return Authorized
@@ -239,6 +240,7 @@ instance Yesod App where
   isAuthorized ParthomeR _ = return Authorized
   isAuthorized PartnewR _ = return Authorized
   isAuthorized PartadminR _ = isAuthenticated
+  isAuthorized PartprofileR _ = isAuthenticated
 
   -- This function creates static content files in the static folder
   -- and names them based on a hash of their content. This allows
@@ -296,8 +298,10 @@ instance YesodBreadcrumbs App where
   breadcrumb ParthomeR = return ("Home", Just HomeR)
   breadcrumb PartnewR = return ("Posts/newr", Just HomeR)
   breadcrumb PartadminR = return ("Adminr", Just HomeR)
+  breadcrumb PartprofileR = return ("Profiles", Just HomeR)
   breadcrumb PostNewR = return ("Posts/new", Just HomeR)
   breadcrumb (PostDetailsR idx) = return ("Posts/" ++ toPathPiece idx, Just HomeR)
+  breadcrumb (PartdetailsR idx) = return ("Posts/" ++ toPathPiece idx, Just HomeR)
   breadcrumb _ = return ("home", Nothing)
 
 -- How to run database actions.
