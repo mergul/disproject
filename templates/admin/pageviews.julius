@@ -1,4 +1,3 @@
-let myChart, ctx;
 window.addEventListener('load', (event) => {
   ensureFooIsSet().then(() => mySubject.subscribe(val=>{
     console.log("val: ", val)

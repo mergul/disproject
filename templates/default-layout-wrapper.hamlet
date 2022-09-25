@@ -45,8 +45,9 @@ $newline never
     <script>
       document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
       var mySubject;
+      var parser = new DOMParser();
       const mamap = new Map();
-      console.log("ma state: ", location.href);
+      console.log("ma state: ", location.href, mamap);
       window.addEventListener('load', (event) => {
         getsScript("rxjs", "1", "https://unpkg.com/rxjs@7.5.2/dist/bundles/rxjs.umd.min.js?v=0",
           "script", "javascript", function () {
@@ -54,28 +55,7 @@ $newline never
             console.log("rxjs loaded!!!");
           });
       });
-      function myRoute(event) {
-        const uparts=event.currentTarget.href.split("/");
-        if (uparts[uparts.length-1] === "admin"||uparts[uparts.length-2]==="auth") return;
-        event.preventDefault();
-        window.history.pushState({}, "newUrl", event.currentTarget.href);
-        fetch(event.currentTarget.href)
-          .then((data) => data.text())
-          .then((html) => {
-            console.log(html);
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(html, "text/html"); 
-            mamap.set(uparts[uparts.length-1], doc);
-            document.querySelector("main.container").innerHTML = doc.querySelector("main.container").innerHTML;
-            document.getElementsByTagName("head")[0].appendChild(doc.querySelector("link"));
-            $# document.body.appendChild(doc.querySelector("script"));            
-          });
-      }
-      window.addEventListener('popstate', function() {
-        const uparts=location.href.split("/");
-        document.querySelector("main.container").innerHTML = mamap.get(uparts[uparts.length-1]===""?"home":uparts[uparts.length-1]).querySelector("main.container").innerHTML;
-        $# document.getElementsByTagName("head")[0].appendChild(mamap.get(uparts[uparts.length-1]).querySelector("link"));
-      });
+      
   <body>
     ^{pageBody pc}
 

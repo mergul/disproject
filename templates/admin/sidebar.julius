@@ -1,4 +1,4 @@
-const section = document.querySelector('.home-section');
+/*const section = document.querySelector('.home-section');
 function myRouter(event, type) {
   event.preventDefault();
   window.history.pushState({}, 'newUrl', event.currentTarget.href);
@@ -129,4 +129,4 @@ window.addEventListener('load', (event) => {
 });
 window.addEventListener('popstate', function() {
   recreateChart(document.location.toString().includes("pageviews") ? bar:polarArea);
-});
+});*/

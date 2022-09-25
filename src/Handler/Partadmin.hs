@@ -3,6 +3,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE NoImplicitPrelude #-}
+{-# OPTIONS_GHC -Wno-deferred-out-of-scope-variables #-}
 
 module Handler.Partadmin where
 
@@ -14,5 +15,6 @@ getPartadminR :: Handler Html
 getPartadminR = do
   (_, _) <- requireAuthPair
   emptyLayout $ do
+    addScript $ StaticR js_mychart_js
     $(widgetFile "admin/sidebar")
     $(widgetFile "admin/index")

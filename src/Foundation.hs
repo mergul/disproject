@@ -166,7 +166,7 @@ instance Yesod App where
             NavbarLeft $
               MenuItem
                 { menuItemLabel = "Admin",
-                  menuItemRoute = AdminR,
+                  menuItemRoute = PartadminR,
                   menuItemAccessCallback = isJust muser
                 },
             NavbarRight $
