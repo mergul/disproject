@@ -1,3 +1,4 @@
 {
-  "haskell.manageHLS": "GHCup"
+  "haskell.manageHLS": "GHCup",
+  "editor.fontSize": 18
 }

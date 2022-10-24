@@ -1,2 +1,15 @@
 <h1>#{blogPostTitle blogPost}
 <article>#{blogPostArticle blogPost}
+    <div .comment-form>
+        <form .form-horizontal ##{commentFormId}>
+            <div .field>
+                <textarea rows="2" ##{commentTextareaId} placeholder="Your comment here..." required></textarea>
+            <button .btn.btn-primary type=submit>
+                Create comment
+    <div .comments>
+        <small>
+            Your comments will appear here. You can also open the
+            console log to see the raw response from the server.
+        <ul ##{commentListId}>
+            $forall comment <- allComments
+                <li>#{commentMessage $ entityVal comment}

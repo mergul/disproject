@@ -15,7 +15,6 @@ import Yesod.Form.Bootstrap3 ()
 getHomeR :: Handler Html
 getHomeR = do
   allPosts <- runDB $ selectList [] [Desc BlogPostId]
-
   let wikiRoot = WikiR []
   defaultLayout $ do
     setTitle "Welcome To Yesod!"

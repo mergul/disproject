@@ -45,6 +45,7 @@ import Handler.Admin
 import Handler.AdminPageviews
 import Handler.Comment
 import Handler.Common
+import Handler.FirstCustomer
 import Handler.Home
 import Handler.Partadmin
 import Handler.Partdetails

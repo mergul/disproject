@@ -1,0 +1,11 @@
+.comment-form {
+    padding: 20px 0;
+}
+.comments {
+    width: 60%;
+    margin: auto;
+    li {
+        background-color: darkolivegreen;
+        opacity: 60%;
+    }
+}

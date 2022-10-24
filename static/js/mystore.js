@@ -72,11 +72,7 @@ function ensureFooIsSet() {
 function myRoute(event) {
   const uparts = event.currentTarget.href.split("/");
   console.log("myRoute --> ", uparts);
-  if (
-    //   uparts[uparts.length - 1] === "admin" ||
-    uparts[uparts.length - 2] === "auth"
-  )
-    return;
+  if (uparts[uparts.length - 2] === "auth") return;
   event.preventDefault();
   const makey = uparts[uparts.length - 1]
     .replace("newr", "new")
@@ -89,6 +85,7 @@ function myRoute(event) {
       .replace("/postz/", "/posts/")
       .replace("/newr", "/new")
       .replace("/adminr", "/admin")
+      .replace("/profiles", "/profile")
   );
   if (!mamap.has(makey)) {
     console.log("myRoute mamap has not --> ", uparts);
@@ -146,7 +143,9 @@ function setHTML(el, key = "") {
           console.log("chart-sidebar");
           ensureFooIsSet().then(() => {
             mySubject.next(true);
-            recreateChart(bar);
+            setTimeout(() => {
+              recreateChart(bar);
+            }, 30);
           });
         }
       );

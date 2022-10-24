@@ -19,8 +19,8 @@
 /admin/pageviews AdminPageviewsR GET
 /posts/new PostNewR GET POST
 /posts/newr PartnewR GET
-/posts/!#BlogPostId PostDetailsR GET
-/postz/!#BlogPostId PartdetailsR GET
-
+/posts/!#BlogPostId PostDetailsR GET POST
+/postz/!#BlogPostId PartdetailsR GET POST
+/profiles/first FirstCustomerR GET
 /wiki/*Texts WikiR GET POST -- note the multipiece for the wiki hierarchy
 /chat ChatR Chat appChat    -- the chat subsite

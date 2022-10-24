@@ -1,0 +1,1 @@
+2022-09-30 05:13:42.285164802000 [1241804(ThreadId 13)] ERROR APP - <file descriptor: 58>: hPutChar: resource vanished (Broken pipe)

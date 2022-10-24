@@ -136,7 +136,8 @@ chatWidget toMaster = do
       toWidget
         [lucius|
             .note {
-                background-color: rgba(0, 0, 0, 0.4) !important
+                background-color: rgba(0, 0, 0, 0.9) !important;
+                a { color: white; }
             }
           |]
 
