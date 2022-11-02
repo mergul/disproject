@@ -169,3 +169,14 @@ window.addEventListener("popstate", function (event) {
   }
   setHTML(mamap.get(makey));
 });
+function getJson(event) {
+  event.preventDefault();
+  fetch(event.currentTarget.pathname)
+    .then((data) => data.json())
+    .then((response) => {
+      var newNode = document.createElement("li");
+      newNode.innerText = JSON.stringify(response);
+      console.log(response);
+      document.getElementById("json").append(newNode);
+    });
+}

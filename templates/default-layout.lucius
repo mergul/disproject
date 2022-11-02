@@ -416,3 +416,6 @@ nav button:hover {
   padding: 0.5rem;
   border: 0;
 }
+a {
+  color: aquamarine;
+}

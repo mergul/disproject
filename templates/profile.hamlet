@@ -8,4 +8,5 @@
 
     <p>
       Your data is protected with us <strong><span class="username">#{userIdent user}</span></strong>!
-    <a href="profiles/first">First User
+    <p #json>
+        <a href="@{FirstCustomerR}" onclick="getJson(event)">First User
